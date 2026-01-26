@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Integration Accelerator - A 6-week practical framework for traditional business owners to implement AI without coding or expensive consultants.">
+    <title>AI Integration Accelerator | MyKindAHelp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-cream: #EEF4F7;
+            --color-warm-white: #F5F9FB;
+            --color-terracotta: #3BA3D0;
+            --color-terracotta-dark: #2B8AB5;
+            --color-terracotta-light: #6BBDE0;
+            --color-charcoal: #3A4A5C;
+            --color-warm-gray: #5A6A7A;
+            --color-light-gray: #D0DDE5;
+            --color-sage: #8BC53F;
+            --color-gold: #E9A83D;
+            --color-gold-light: #F5C56B;
+            --font-display: 'DM Serif Display', Georgia, serif;
+            --font-body: 'Instrument Sans', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-cream);
+            color: var(--color-charcoal);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.25rem 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(238, 244, 247, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(59, 163, 208, 0.1);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-terracotta);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-charcoal);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-terracotta);
+        }
+
+        .btn-primary {
+            background: var(--color-terracotta);
+            color: white !important;
+            padding: 0.75rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 163, 208, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-terracotta-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(59, 163, 208, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-terracotta) !important;
+            padding: 0.75rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 2px solid var(--color-terracotta);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-terracotta);
+            color: white !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 4% 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-terracotta-light) 0%, var(--color-terracotta) 100%);
+            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+            opacity: 0.1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, rgba(233, 168, 61, 0.15), rgba(233, 168, 61, 0.08));
+            border: 1px solid rgba(233, 168, 61, 0.3);
+            color: #b8860b;
+            padding: 0.6rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--color-charcoal);
+            margin-bottom: 1.25rem;
+            line-height: 1.15;
+        }
+
+        .hero h1 span {
+            color: var(--color-terracotta);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--color-warm-gray);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-feature .check {
+            width: 22px;
+            height: 22px;
+            background: var(--color-terracotta);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .hero-feature span {
+            font-weight: 500;
+            color: var(--color-charcoal);
+        }
+
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--color-light-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--color-terracotta);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--color-warm-gray);
+            margin-top: 0.25rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 4%;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-terracotta);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+            color: var(--color-charcoal);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--color-warm-gray);
+            line-height: 1.65;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: var(--color-warm-white);
+        }
+
+        .problem-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .problem-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(58, 74, 92, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(58, 74, 92, 0.1);
+        }
+
+        .problem-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(233, 168, 61, 0.15), rgba(233, 168, 61, 0.05));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .problem-card h3 {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .problem-card p {
+            font-size: 0.9rem;
+            color: var(--color-warm-gray);
+            line-height: 1.6;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background: var(--color-cream);
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-marker {
+            width: 48px;
+            height: 48px;
+            background: var(--color-terracotta);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            background: white;
+            border-radius: 14px;
+            padding: 1.75rem;
+            flex: 1;
+            box-shadow: 0 4px 20px rgba(58, 74, 92, 0.06);
+            border-left: 4px solid var(--color-terracotta);
+        }
+
+        .timeline-week {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--color-terracotta);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.35rem;
+        }
+
+        .timeline-content h3 {
+            font-family: var(--font-body);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--color-charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            font-size: 0.9rem;
+            color: var(--color-warm-gray);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-deliverable {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(59, 163, 208, 0.1);
+            padding: 0.5rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-terracotta-dark);
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            background: var(--color-warm-white);
+        }
+
+        .pricing-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(58, 74, 92, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(58, 74, 92, 0.12);
+        }
+
+        .pricing-header {
+            padding: 1.75rem 1.75rem 1.5rem;
+        }
+
+        .pricing-card.tier-1 .pricing-header {
+            background: linear-gradient(135deg, #5b8db8 0%, #3d7ba8 100%);
+        }
+
+        .pricing-card.tier-2 .pricing-header {
+            background: linear-gradient(135deg, var(--color-terracotta-light) 0%, var(--color-terracotta) 100%);
+        }
+
+        .pricing-card.tier-3 .pricing-header {
+            background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold) 100%);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-terracotta);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 0 0 10px 10px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-tier {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-amount {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            color: white;
+            margin-bottom: 0.25rem;
+        }
+
+        .price-value {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 400;
+            line-height: 1;
+        }
+
+        .price-term {
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+
+        .pricing-tagline {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.85rem;
+        }
+
+        .pricing-body {
+            padding: 1.75rem;
+        }
+
+        .pricing-intro {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-charcoal);
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.85rem;
+            font-size: 0.9rem;
+            color: var(--color-warm-gray);
+            line-height: 1.5;
+        }
+
+        .pricing-features li .check {
+            color: var(--color-terracotta);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .pricing-features li .x-mark {
+            color: #ccc;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .pricing-features li.excluded {
+            color: #aaa;
+        }
+
+        .pricing-results {
+            background: rgba(59, 163, 208, 0.08);
+            padding: 0.9rem 1.1rem;
+            border-radius: 10px;
+            margin-bottom: 1.25rem;
+            font-size: 0.85rem;
+        }
+
+        .pricing-results strong {
+            color: var(--color-charcoal);
+        }
+
+        .best-for {
+            display: block;
+            padding: 0.65rem 1.25rem;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .tier-1 .best-for {
+            background: rgba(91, 141, 184, 0.12);
+            color: #3d7ba8;
+        }
+
+        .tier-2 .best-for {
+            background: rgba(59, 163, 208, 0.12);
+            color: var(--color-terracotta-dark);
+        }
+
+        .tier-3 .best-for {
+            background: rgba(233, 168, 61, 0.15);
+            color: #b8860b;
+        }
+
+        /* Audience Section */
+        .audience-section {
+            background: var(--color-cream);
+        }
+
+        .audience-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .audience-card {
+            background: white;
+            border-radius: 14px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            box-shadow: 0 4px 20px rgba(58, 74, 92, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .audience-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(58, 74, 92, 0.1);
+        }
+
+        .audience-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--color-terracotta);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .audience-card h3 {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-charcoal);
+            margin-bottom: 0.35rem;
+        }
+
+        .audience-card p {
+            font-size: 0.85rem;
+            color: var(--color-warm-gray);
+            line-height: 1.55;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: var(--color-warm-white);
+        }
+
+        .faq-grid {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(58, 74, 92, 0.05);
+        }
+
+        .faq-question {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-charcoal);
+        }
+
+        .faq-toggle {
+            color: var(--color-terracotta);
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.25rem;
+            color: var(--color-warm-gray);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--color-cream);
+            text-align: center;
+            padding: 5rem 4%;
+        }
+
+        .cta-section h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+            color: var(--color-charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.05rem;
+            color: var(--color-warm-gray);
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 4%;
+            background: var(--color-charcoal);
+            color: white;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-terracotta-light);
+        }
+
+        .footer-info {
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        .footer-location {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 2px;
+            background: var(--color-charcoal);
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-bg {
+                width: 100%;
+                clip-path: none;
+                opacity: 0.08;
+            }
+
+            .stats-row {
+                gap: 2rem;
+            }
+
+            .stat-item {
+                flex: 1 1 40%;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timeline-marker {
+                align-self: flex-start;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="./" class="logo">MyKindAHelp</a>
+        <div class="nav-links">
+            <a href="./#services">Services</a>
+            <a href="./about.html">About</a>
+            <a href="./#contact">Contact</a>
+            <a href="https://mykindahelp.setmore.com/" target="_blank" rel="noopener" class="btn-primary">Book Now</a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-badge">
+            <span>🔥</span>
+            <span>Founding Member Special • 40% Off</span>
+        </div>
+        <h1>AI Integration <span>Accelerator</span></h1>
+        <p>The 6-week practical framework for traditional business owners. Implement AI without coding, tech teams, or six-figure consulting budgets.</p>
+        <div class="hero-features">
+            <div class="hero-feature">
+                <div class="check">✓</div>
+                <span>No coding required</span>
+            </div>
+            <div class="hero-feature">
+                <div class="check">✓</div>
+                <span>Real deliverables each week</span>
+            </div>
+            <div class="hero-feature">
+                <div class="check">✓</div>
+                <span>50+ AI tools covered</span>
+            </div>
+        </div>
+        <div class="hero-cta">
+            <a href="#pricing" class="btn-primary">View Pricing →</a>
+            <a href="#program" class="btn-secondary">See Curriculum</a>
+        </div>
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Week Program</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">AI Tools Covered</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">25</div>
+                <div class="stat-label">Cohort Limit</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Lifetime Access</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="section-header">
+            <div class="section-label">The Challenge</div>
+            <h2 class="section-title">AI Feels Overwhelming. It Doesn't Have to Be.</h2>
+            <p class="section-subtitle">Most business owners know AI is important but feel stuck on where to start.</p>
+        </div>
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="problem-icon">😵</div>
+                <h3>Information Overload</h3>
+                <p>New AI tools launch daily. ChatGPT, Claude, Gemini... Where do you even begin?</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">💸</div>
+                <h3>Expensive Consultants</h3>
+                <p>AI consultants charge $300-500/hour. Most small businesses can't afford that guidance.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">🤷</div>
+                <h3>No Clear Roadmap</h3>
+                <p>YouTube gives pieces, not the whole picture. You need a structured implementation path.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">⏰</div>
+                <h3>Time Constraints</h3>
+                <p>You're running a business. Who has time to become an AI expert on top of everything?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Timeline -->
+    <section class="timeline-section" id="program">
+        <div class="section-header">
+            <div class="section-label">The Program</div>
+            <h2 class="section-title">Your 6-Week AI Transformation</h2>
+            <p class="section-subtitle">Each week delivers practical skills and real deliverables you can implement immediately.</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-marker">1</div>
+                <div class="timeline-content">
+                    <div class="timeline-week">Week 1</div>
+                    <h3>AI Foundations & Quick Wins</h3>
+                    <p>Understand the AI landscape, set up essential accounts, and identify your highest-impact automation opportunities.</p>
+                    <div class="timeline-deliverable">📋 Personal AI Audit + Quick Win Implementation</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-marker">2</div>
+                <div class="timeline-content">
+                    <div class="timeline-week">Week 2</div>
+                    <h3>Content & Communications</h3>
+                    <p>Master AI writing assistants for emails, social media, marketing copy, and customer communications.</p>
+                    <div class="timeline-deliverable">📋 AI-Powered Content Workflow</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-marker">3</div>
+                <div class="timeline-content">
+                    <div class="timeline-week">Week 3</div>
+                    <h3>Visual & Creative AI</h3>
+                    <p>Create professional images, graphics, and visual content without design skills using AI image generators.</p>
+                    <div class="timeline-deliverable">📋 Brand Visual Asset Library</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-marker">4</div>
+                <div class="timeline-content">
+                    <div class="timeline-week">Week 4</div>
+                    <h3>Automation & Workflows</h3>
+                    <p>Connect your tools with AI-powered automation. Build workflows that save hours every week.</p>
+                    <div class="timeline-deliverable">📋 3 Automated Business Workflows</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-marker">5</div>
+                <div class="timeline-content">
+                    <div class="timeline-week">Week 5</div>
+                    <h3>Customer Experience & AI</h3>
+                    <p>Implement AI chatbots, intelligent FAQs, and automated customer support that works 24/7.</p>
+                    <div class="timeline-deliverable">📋 AI Customer Support System</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-marker">6</div>
+                <div class="timeline-content">
+                    <div class="timeline-week">Week 6</div>
+                    <h3>Strategy & Scaling</h3>
+                    <p>Build your 90-day AI roadmap, measure ROI, and plan for continuous improvement.</p>
+                    <div class="timeline-deliverable">📋 Custom AI Implementation Roadmap</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="section-header">
+            <div class="section-label">Investment</div>
+            <h2 class="section-title">Choose Your Growth Path</h2>
+            <p class="section-subtitle">Founding member pricing available for a limited time.</p>
+        </div>
+        <div class="pricing-grid">
+            <!-- Tier 1 -->
+            <div class="pricing-card tier-1">
+                <div class="pricing-header">
+                    <div class="pricing-tier">Self-Paced</div>
+                    <div class="pricing-amount">
+                        <span class="price-value">$297</span>
+                        <span class="price-term">— One-Time</span>
+                    </div>
+                    <div class="pricing-tagline">Learn on your schedule with lifetime access.</div>
+                </div>
+                <div class="pricing-body">
+                    <p class="pricing-intro">Get the complete framework and implement at your own pace.</p>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> Complete 6-week video curriculum</li>
+                        <li><span class="check">✓</span> 50+ AI tool tutorials & walkthroughs</li>
+                        <li><span class="check">✓</span> Templates & prompt libraries</li>
+                        <li><span class="check">✓</span> Lifetime access to all updates</li>
+                        <li class="excluded"><span class="x-mark">✗</span> Live sessions & office hours</li>
+                        <li class="excluded"><span class="x-mark">✗</span> Direct expert feedback</li>
+                    </ul>
+                    <div class="best-for">Best for: Independent Learners</div>
+                </div>
+            </div>
+
+            <!-- Tier 2 (Featured) -->
+            <div class="pricing-card tier-2">
+                <div class="popular-badge">Most Popular</div>
+                <div class="pricing-header">
+                    <div class="pricing-tier">Cohort-Based</div>
+                    <div class="pricing-amount">
+                        <span class="price-value">$897</span>
+                        <span class="price-term">— 6 Weeks</span>
+                    </div>
+                    <div class="pricing-tagline">Live guidance with expert support.</div>
+                </div>
+                <div class="pricing-body">
+                    <p class="pricing-intro">Move toward real implementation with accountability and community.</p>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> Everything in Self-Paced</li>
+                        <li><span class="check">✓</span> 6 live weekly group sessions</li>
+                        <li><span class="check">✓</span> Weekly office hours Q&A</li>
+                        <li><span class="check">✓</span> Cohort community & networking</li>
+                        <li><span class="check">✓</span> Implementation accountability</li>
+                        <li><span class="check">✓</span> Direct expert feedback</li>
+                    </ul>
+                    <div class="pricing-results">
+                        <strong>Results:</strong> Structured implementation + peer support
+                    </div>
+                    <div class="best-for">Best for: Guided Implementation</div>
+                </div>
+            </div>
+
+            <!-- Tier 3 -->
+            <div class="pricing-card tier-3">
+                <div class="pricing-header">
+                    <div class="pricing-tier">VIP Implementation</div>
+                    <div class="pricing-amount">
+                        <span class="price-value">$2,997</span>
+                        <span class="price-term">— 90-Day Sprint</span>
+                    </div>
+                    <div class="pricing-tagline">Done-with-you premium experience.</div>
+                </div>
+                <div class="pricing-body">
+                    <p class="pricing-intro">Fast-track your AI transformation with hands-on support.</p>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> Everything in Cohort-Based</li>
+                        <li><span class="check">✓</span> 1:1 strategy kickoff call</li>
+                        <li><span class="check">✓</span> Custom AI implementation roadmap</li>
+                        <li><span class="check">✓</span> 3 months of priority support</li>
+                        <li><span class="check">✓</span> Monthly progress check-ins</li>
+                        <li><span class="check">✓</span> Direct Slack/email access</li>
+                    </ul>
+                    <div class="pricing-results">
+                        <strong>Results:</strong> Maximum speed + personalized guidance
+                    </div>
+                    <div class="best-for">Best for: Accelerated Results</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audience Section -->
+    <section class="audience-section">
+        <div class="section-header">
+            <div class="section-label">Perfect For</div>
+            <h2 class="section-title">Is This Program Right For You?</h2>
+            <p class="section-subtitle">Built for action-takers ready to transform their business with AI.</p>
+        </div>
+        <div class="audience-grid">
+            <div class="audience-card">
+                <div class="audience-icon">🏪</div>
+                <div>
+                    <h3>Retail & E-commerce</h3>
+                    <p>Automate inventory, customer service, and marketing with AI tools.</p>
+                </div>
+            </div>
+            <div class="audience-card">
+                <div class="audience-icon">🏥</div>
+                <div>
+                    <h3>Healthcare Practices</h3>
+                    <p>Streamline patient communications, scheduling, and admin tasks.</p>
+                </div>
+            </div>
+            <div class="audience-card">
+                <div class="audience-icon">🔧</div>
+                <div>
+                    <h3>Service Businesses</h3>
+                    <p>HVAC, plumbing, contractors—automate quotes and follow-ups.</p>
+                </div>
+            </div>
+            <div class="audience-card">
+                <div class="audience-icon">🏭</div>
+                <div>
+                    <h3>Manufacturing</h3>
+                    <p>AI for documentation, quality control, and vendor communications.</p>
+                </div>
+            </div>
+            <div class="audience-card">
+                <div class="audience-icon">💼</div>
+                <div>
+                    <h3>Professional Services</h3>
+                    <p>Lawyers, accountants—leverage AI for research and client work.</p>
+                </div>
+            </div>
+            <div class="audience-card">
+                <div class="audience-icon">🚀</div>
+                <div>
+                    <h3>Growth-Minded Entrepreneurs</h3>
+                    <p>Anyone ready to work smarter by implementing AI strategically.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="section-header">
+            <div class="section-label">Questions</div>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do I need technical skills or coding experience?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Absolutely not. This program is specifically designed for non-technical business owners. If you can use email and basic apps, you can implement everything we teach.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How much time do I need to commit each week?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Plan for 3-5 hours per week. This includes watching the training content, attending live sessions (for cohort members), and implementing what you learn.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What if AI tools change after I complete the program?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    That's why you get lifetime access. We continuously update the curriculum as AI evolves. The fundamentals you'll learn will serve you regardless of which tools dominate.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is there a money-back guarantee?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Yes. If you complete the first two weeks, implement the strategies, and don't see value, we'll refund your investment. We're confident in the results.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>When does the next cohort start?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    We run cohorts monthly with 25 spots each. The Self-Paced option is available immediately. Contact us for the next cohort start date.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Transform Your Business?</h2>
+        <p>Join business owners implementing AI the smart way—practical, affordable, and effective.</p>
+        <div class="cta-buttons">
+            <a href="#pricing" class="btn-primary">View Pricing Options →</a>
+            <a href="./#contact" class="btn-secondary">Have Questions? Let's Talk</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">MyKindAHelp</div>
+            <div class="footer-info">© 2025 MyKindAHelp.com • All Rights Reserved</div>
+            <div class="footer-location">Tampa, FL</div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // FAQ toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const wasActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(faq => faq.classList.remove('active'));
+                if (!wasActive) item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
