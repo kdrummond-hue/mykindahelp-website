@@ -60,7 +60,7 @@
         .mobile-menu-btn span { width: 25px; height: 2px; background: var(--color-charcoal); }
 
         .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 4% 4rem; position: relative; overflow: hidden; background: linear-gradient(180deg, rgba(238, 244, 247, 0.95) 0%, rgba(238, 244, 247, 0.98) 100%); }
-        .hero::before { content: ''; position: absolute; inset: 0; background-image: url('Tampa_Backdrop.jpg'); background-size: cover; background-position: center; opacity: 0.15; z-index: 0; }
+        .hero::before { content: ''; position: absolute; inset: 0; background-image: url('Tampa Backdrop.jpg'); background-size: cover; background-position: center; opacity: 0.15; z-index: 0; }
         .hero-shapes { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 1; }
         .shape { position: absolute; border-radius: 50%; opacity: 0.5; }
         .shape-1 { width: 400px; height: 400px; background: linear-gradient(135deg, rgba(59,163,208,0.2), rgba(139,197,63,0.1)); top: -100px; right: -100px; animation: float 8s ease-in-out infinite; }
@@ -172,7 +172,10 @@
 </head>
 <body>
     <nav class="navbar">
-        <a href='/' class="logo">MyKindAHelp</a>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <img src="logo icon.png" alt="MyKindAHelp Logo" style="height: 40px; width: auto;">
+            <a href='/' class="logo">MyKindAHelp</a>
+        </div>
         <div class="nav-links">
             <div class="dropdown">
                 <span class="dropdown-toggle">Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
@@ -193,7 +196,6 @@
         <div class="hero-shapes"><div class="shape shape-1"></div><div class="shape shape-2"></div><div class="shape shape-3"></div><div class="shape shape-4"></div></div>
         <div class="hero-content">
             <div class="hero-text">
-                <img src="logo-icon.png" alt="MyKindAHelp" class="hero-logo">
                 <div class="hero-badge"><span class="hero-badge-dot"></span>For Local Service Businesses</div>
                 <h1>You're Missing Customers From <span class="highlight">Google Right Now</span></h1>
                 <p>Most local service businesses don't have a traffic problem—they have a setup problem. Get found online, capture more calls, and turn visitors into customers.</p>
@@ -227,7 +229,7 @@
             <div class="pricing-grid">
                 <!-- Google Profile Fix -->
                 <div class="pricing-card">
-                    <div class="pricing-icon"><img src="Google_Profile_Before_and_After.jpg" alt="Google Profile Fix"></div>
+                    <div class="pricing-icon"><img src="Google Profile Before and After.jpg" alt="Google Profile Fix"></div>
                     <h3 class="pricing-name">Google Profile Fix</h3>
                     <div class="pricing-price">$149</div>
                     <div class="pricing-timeline">
@@ -335,7 +337,6 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <img src="logo-icon.png" alt="MyKindAHelp" class="footer-logo">
             <div class="footer-info">© 2026 MyKindAHelp.com • All Rights Reserved</div>
             <div class="footer-location">Tampa, FL</div>
         </div>
