@@ -43,6 +43,16 @@
         .nav-links span::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--color-terracotta), var(--color-sage)); transition: width 0.3s; }
         .nav-links span:hover { color: var(--color-terracotta); }
         .nav-links span:hover::after { width: 100%; }
+        .dropdown { position: relative; }
+        .dropdown-toggle { color: var(--color-charcoal); font-size: 0.9rem; font-weight: 500; cursor: pointer; padding: 0.5rem 0; position: relative; transition: color 0.3s; display: flex; align-items: center; gap: 0.25rem; }
+        .dropdown-toggle::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--color-terracotta), var(--color-sage)); transition: width 0.3s; }
+        .dropdown:hover .dropdown-toggle { color: var(--color-terracotta); }
+        .dropdown:hover .dropdown-toggle::after { width: 100%; }
+        .dropdown-menu { position: absolute; top: 100%; left: 0; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); padding: 0.5rem 0; min-width: 200px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s; z-index: 1000; margin-top: 0.5rem; }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-menu a { display: block; padding: 0.75rem 1.25rem; color: var(--color-charcoal); font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: all 0.3s; }
+        .dropdown-menu a::after { display: none; }
+        .dropdown-menu a:hover { background: var(--color-cream); color: var(--color-terracotta); padding-left: 1.5rem; }
         .btn-primary { background: linear-gradient(135deg, var(--color-terracotta), var(--color-terracotta-dark)); color: white !important; padding: 0.75rem 1.75rem; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 15px rgba(59,163,208,0.3); }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(59,163,208,0.4); }
         .btn-primary::after { display: none; }
@@ -90,7 +100,8 @@
         .pricing-card:hover { transform: translateY(-8px); box-shadow: 0 30px 80px rgba(0,0,0,0.12); }
         .pricing-card.featured { border-color: var(--color-sage); background: linear-gradient(135deg, rgba(139,197,63,0.05), rgba(59,163,208,0.05)); }
         .best-value-badge { position: absolute; top: -12px; right: 20px; background: var(--color-sage); color: white; padding: 0.5rem 1.25rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; box-shadow: 0 4px 12px rgba(139,197,63,0.3); }
-        .pricing-icon { width: 70px; height: 70px; background: linear-gradient(135deg, var(--color-cream), rgba(59,163,208,0.1)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: var(--color-terracotta); font-size: 2rem; }
+        .pricing-icon { width: 70px; height: 70px; background: linear-gradient(135deg, var(--color-cream), rgba(59,163,208,0.1)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: var(--color-terracotta); font-size: 2rem; overflow: hidden; }
+        .pricing-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
         .pricing-name { font-family: var(--font-display); font-size: 1.75rem; color: var(--color-charcoal); margin-bottom: 1rem; }
         .pricing-price { font-family: var(--font-display); font-size: 3.5rem; color: var(--color-terracotta); line-height: 1; margin-bottom: 0.5rem; }
         .pricing-timeline { color: var(--color-warm-gray); font-size: 0.9rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.5rem; }
@@ -163,6 +174,13 @@
     <nav class="navbar">
         <a href='/' class="logo">MyKindAHelp</a>
         <div class="nav-links">
+            <div class="dropdown">
+                <span class="dropdown-toggle">Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+                <div class="dropdown-menu">
+                    <a href="ai-implementation.html">AI Implementation</a>
+                    <a href="services.html">All Services</a>
+                </div>
+            </div>
             <span onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Pricing</span>
             <span onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</span>
             <span onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</span>
@@ -209,7 +227,7 @@
             <div class="pricing-grid">
                 <!-- Google Profile Fix -->
                 <div class="pricing-card">
-                    <div class="pricing-icon">📍</div>
+                    <div class="pricing-icon"><img src="Google_Profile_Before_and_After.jpg" alt="Google Profile Fix"></div>
                     <h3 class="pricing-name">Google Profile Fix</h3>
                     <div class="pricing-price">$149</div>
                     <div class="pricing-timeline">
@@ -226,7 +244,7 @@
 
                 <!-- Landing Page -->
                 <div class="pricing-card">
-                    <div class="pricing-icon">🌐</div>
+                    <div class="pricing-icon"><img src="Landing_Page_Setup.jpg" alt="Landing Page"></div>
                     <h3 class="pricing-name">Landing Page Setup</h3>
                     <div class="pricing-price">$250</div>
                     <div class="pricing-timeline">
@@ -244,7 +262,7 @@
                 <!-- Complete Bundle - Featured -->
                 <div class="pricing-card featured">
                     <div class="best-value-badge">BEST VALUE</div>
-                    <div class="pricing-icon">🚀</div>
+                    <div class="pricing-icon"><img src="Bundle.jpg" alt="Complete Bundle"></div>
                     <h3 class="pricing-name">Complete Bundle</h3>
                     <div class="pricing-price">$299</div>
                     <div class="pricing-timeline">
