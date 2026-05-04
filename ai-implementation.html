@@ -1,9 +1,325 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>AI Implementation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>90-Day AI Implementation | MyKindAHelp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-cream: #EEF4F7;
+            --color-warm-white: #FFFFFF;
+            --color-terracotta: #3BA3D0;
+            --color-terracotta-dark: #2B8AB5;
+            --color-terracotta-light: #6BBDE0;
+            --color-charcoal: #3A4A5C;
+            --color-warm-gray: #5A6A7A;
+            --color-light-gray: #D0DDE5;
+            --color-sage: #8BC53F;
+            --font-display: 'DM Serif Display', Georgia, serif;
+            --font-body: 'Instrument Sans', -apple-system, sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); background: var(--color-warm-white); color: var(--color-charcoal); line-height: 1.6; overflow-x: hidden; }
+
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(2deg); } }
+        @keyframes pulse { 0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.05); } }
+
+        .navbar { position: fixed; top: 0; left: 0; right: 0; padding: 1rem 4%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(59,163,208,0.1); animation: slideDown 0.6s ease-out; }
+        .logo { height: 45px; cursor: pointer; text-decoration: none; transition: transform 0.3s; }
+        .logo:hover { transform: scale(1.05); }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--color-charcoal); font-size: 0.9rem; font-weight: 500; text-decoration: none; padding: 0.5rem 0; position: relative; transition: color 0.3s; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--color-terracotta), var(--color-sage)); transition: width 0.3s; }
+        .nav-links a:hover { color: var(--color-terracotta); }
+        .nav-links a:hover::after { width: 100%; }
+        .btn-primary { background: linear-gradient(135deg, var(--color-terracotta), var(--color-terracotta-dark)); color: white !important; padding: 0.75rem 1.75rem; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 15px rgba(59,163,208,0.3); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(59,163,208,0.4); }
+        .btn-primary::after { display: none; }
+        .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+        .mobile-menu-btn span { width: 25px; height: 2px; background: var(--color-charcoal); }
+
+        .hero { min-height: 70vh; display: flex; align-items: center; padding: 8rem 4% 4rem; position: relative; overflow: hidden; background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 100%); color: white; }
+        .hero-shapes { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+        .shape { position: absolute; border-radius: 50%; opacity: 0.3; }
+        .shape-1 { width: 400px; height: 400px; background: linear-gradient(135deg, rgba(59,163,208,0.3), rgba(139,197,63,0.2)); top: -100px; right: -100px; animation: float 8s ease-in-out infinite; }
+        .shape-2 { width: 300px; height: 300px; background: linear-gradient(135deg, rgba(139,197,63,0.2), rgba(59,163,208,0.2)); bottom: 10%; left: -50px; animation: float 10s ease-in-out infinite reverse; }
+        .hero-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+        .hero-text { animation: slideUp 0.8s ease-out; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(139,197,63,0.2); border: 1px solid rgba(139,197,63,0.4); padding: 0.6rem 1.25rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: var(--color-sage); margin-bottom: 1.5rem; }
+        .hero-badge-dot { width: 8px; height: 8px; background: var(--color-sage); border-radius: 50%; animation: pulse 2s infinite; }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero h1 .highlight { background: linear-gradient(135deg, var(--color-terracotta-light), var(--color-sage)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero p { font-size: 1.15rem; color: rgba(255,255,255,0.85); margin-bottom: 2rem; line-height: 1.8; }
+        .hero-cta { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+        .btn-large { padding: 1rem 2.25rem; font-size: 1rem; }
+        .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; color: white; padding: 1rem 1.5rem; border: 2px solid rgba(255,255,255,0.3); border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s; background: transparent; text-decoration: none; }
+        .btn-secondary:hover { border-color: white; background: rgba(255,255,255,0.1); }
+        .hero-visual { background: rgba(255,255,255,0.05); border-radius: 24px; padding: 2rem; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        .hero-stat { text-align: center; padding: 1.5rem; }
+        .hero-stat-number { font-family: var(--font-display); font-size: 3.5rem; color: var(--color-sage); line-height: 1; }
+        .hero-stat-label { font-size: 1rem; color: rgba(255,255,255,0.7); margin-top: 0.5rem; }
+        .hero-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+        .section { padding: 6rem 4%; }
+        .section-container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 3rem; }
+        .section-label { display: inline-block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-terracotta); margin-bottom: 1rem; padding: 0.5rem 1rem; background: rgba(59,163,208,0.1); border-radius: 50px; }
+        .section-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); color: var(--color-charcoal); line-height: 1.2; margin-bottom: 1rem; }
+        .section-subtitle { font-size: 1.1rem; color: var(--color-warm-gray); line-height: 1.7; }
+
+        .problem-section { background: var(--color-cream); }
+        .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .problem-card { background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .problem-icon { width: 80px; height: 80px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .problem-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .problem-card h3 { font-family: var(--font-display); font-size: 1.5rem; color: var(--color-charcoal); margin-bottom: 1rem; }
+        .problem-card p { color: var(--color-warm-gray); line-height: 1.7; }
+
+        .solution-section { background: white; }
+        .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; margin-top: 3rem; }
+        .solution-card { background: var(--color-cream); padding: 2.5rem; border-radius: 20px; transition: all 0.3s; }
+        .solution-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+        .phase-number { width: 50px; height: 50px; background: linear-gradient(135deg, var(--color-terracotta), var(--color-terracotta-dark)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 15px rgba(59,163,208,0.3); }
+        .solution-card h3 { font-family: var(--font-display); font-size: 1.75rem; color: var(--color-charcoal); margin-bottom: 1rem; }
+        .solution-card p { color: var(--color-warm-gray); margin-bottom: 1.5rem; line-height: 1.7; }
+        .solution-features { list-style: none; }
+        .solution-features li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.5rem 0; color: var(--color-charcoal); }
+        .solution-features li svg { color: var(--color-sage); flex-shrink: 0; margin-top: 0.25rem; }
+
+        .pricing-section { background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 100%); color: white; padding: 6rem 4%; position: relative; }
+        .pricing-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 20% 50%, rgba(59,163,208,0.2) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(139,197,63,0.2) 0%, transparent 50%); pointer-events: none; }
+        .pricing-card-main { background: white; border-radius: 32px; padding: 3rem; color: var(--color-charcoal); max-width: 900px; margin: 3rem auto 0; box-shadow: 0 30px 80px rgba(0,0,0,0.3); position: relative; z-index: 1; }
+        .pricing-header { text-align: center; padding-bottom: 2rem; border-bottom: 2px solid var(--color-light-gray); }
+        .pricing-name { font-family: var(--font-display); font-size: 2rem; color: var(--color-charcoal); margin-bottom: 1rem; }
+        .pricing-price { font-family: var(--font-display); font-size: 4rem; color: var(--color-terracotta); line-height: 1; margin-bottom: 0.5rem; }
+        .pricing-period { color: var(--color-warm-gray); font-size: 1.1rem; }
+        .pricing-body { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding-top: 2rem; }
+        .pricing-features-list { list-style: none; }
+        .pricing-features-list li { display: flex; align-items: flex-start; gap: 1rem; padding: 0.75rem 0; color: var(--color-charcoal); font-size: 1.05rem; }
+        .pricing-features-list li svg { color: var(--color-sage); flex-shrink: 0; margin-top: 0.25rem; }
+        .pricing-cta-section { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .pricing-cta { width: 100%; background: linear-gradient(135deg, var(--color-terracotta), var(--color-terracotta-dark)); color: white; padding: 1.25rem 2.5rem; border-radius: 12px; border: none; font-family: var(--font-body); font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; box-shadow: 0 8px 25px rgba(59,163,208,0.3); margin-bottom: 1rem; }
+        .pricing-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(59,163,208,0.5); }
+        .pricing-note { color: var(--color-warm-gray); font-size: 0.9rem; }
+
+        .faq-section { background: var(--color-cream); }
+        .faq-list { max-width: 800px; margin: 3rem auto 0; }
+        .faq-item { background: white; border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .faq-question { font-family: var(--font-display); font-size: 1.35rem; color: var(--color-charcoal); margin-bottom: 1rem; }
+        .faq-answer { color: var(--color-warm-gray); line-height: 1.8; }
+
+        .footer { padding: 3rem 4%; background: var(--color-charcoal); color: white; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+        .footer-logo { height: 40px; }
+        .footer-info, .footer-location { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+
+        @media (max-width: 1024px) {
+            .hero-content { grid-template-columns: 1fr; }
+            .hero-visual { margin-top: 2rem; }
+            .pricing-body { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .hero { padding-top: 6rem; }
+            .hero h1 { font-size: 2rem; }
+            .solution-grid, .problem-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-    <h1>AI Implementation</h1>
-    <p>This page is dedicated to AI implementation details.</p>
+    <nav class="navbar">
+        <a href='index.html'><img src="logo.png" alt="MyKindAHelp" class="logo"></a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#pricing">Pricing</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="mailto:info@mykindahelp.com" class="btn-primary">Get Started</a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-shapes"><div class="shape shape-1"></div><div class="shape shape-2"></div></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge"><span class="hero-badge-dot"></span>90-Day Done-With-You Program</div>
+                <h1>Stop Drowning in Busy Work. <span class="highlight">Let AI Handle It.</span></h1>
+                <p>Tired of repetitive tasks eating your day? Our 90-day program installs AI tools that do the work for you—no tech degree required. We build it together, you keep the results.</p>
+                <div class="hero-cta">
+                    <a href="#pricing" class="btn-primary btn-large">See Pricing & Details</a>
+                    <a href="#how-it-works" class="btn-secondary">How It Works</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-stats-grid">
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">90</div>
+                        <div class="hero-stat-label">Days to Transform</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">3</div>
+                        <div class="hero-stat-label">Phase System</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">10+</div>
+                        <div class="hero-stat-label">Hours Saved Weekly</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">100%</div>
+                        <div class="hero-stat-label">Done With You</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section problem-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">The Problem</span>
+                <h2 class="section-title">You're Working Too Hard on the Wrong Things</h2>
+                <p class="section-subtitle">Every hour you spend on repetitive tasks is an hour you're not growing your business.</p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon"><img src="time-drain-icon.webp" alt="Time Drain"></div>
+                    <h3>Time Drain</h3>
+                    <p>Spending hours on data entry, follow-ups, scheduling, and admin work that should take minutes.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon"><img src="tech-confusion-icon.jpg" alt="Tech Confusion"></div>
+                    <h3>Tech Confusion</h3>
+                    <p>Everyone talks about AI, but nobody explains how to actually use it for YOUR business.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon"><img src="money-icon.jpg" alt="Wasted Money"></div>
+                    <h3>Wasted Money</h3>
+                    <p>Paying for software subscriptions you don't understand or use to their full potential.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="section solution-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">The Solution</span>
+                <h2 class="section-title">Our Proven 3-Phase System</h2>
+                <p class="section-subtitle">We implement AI solutions together over 90 days. No confusion. No risk. Just results.</p>
+            </div>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="phase-number">1</div>
+                    <h3>Diagnose</h3>
+                    <p>We analyze your business to find where you're losing the most time and money.</p>
+                    <ul class="solution-features">
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Process audit & workflow mapping</li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Identify automation opportunities</li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Custom AI strategy roadmap</li>
+                    </ul>
+                </div>
+                <div class="solution-card">
+                    <div class="phase-number">2</div>
+                    <h3>Deploy</h3>
+                    <p>We build and configure AI tools specifically for your workflows—together.</p>
+                    <ul class="solution-features">
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Weekly implementation calls</li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Custom tool setup & configuration</li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Hands-on training as we build</li>
+                    </ul>
+                </div>
+                <div class="solution-card">
+                    <div class="phase-number">3</div>
+                    <h3>Optimize</h3>
+                    <p>We fine-tune everything and make sure your team can run it without us.</p>
+                    <ul class="solution-features">
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Performance monitoring & tweaks</li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Team training & documentation</li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Ongoing support access</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label" style="color: var(--color-sage);">Investment</span>
+                <h2 class="section-title" style="color: white;">Transform Your Business in 90 Days</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Done-with-you AI implementation. Real results. No technical skills required.</p>
+            </div>
+            <div class="pricing-card-main">
+                <div class="pricing-header">
+                    <h3 class="pricing-name">90-Day AI Implementation Program</h3>
+                    <div class="pricing-price">$2,497</div>
+                    <div class="pricing-period">starting price / 90 days</div>
+                </div>
+                <div class="pricing-body">
+                    <div>
+                        <h4 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--color-charcoal);">What's Included:</h4>
+                        <ul class="pricing-features-list">
+                            <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Personalized AI strategy & roadmap</li>
+                            <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Weekly 1-on-1 coaching sessions</li>
+                            <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Custom AI tools built for you</li>
+                            <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Complete team training</li>
+                            <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Documentation & playbooks</li>
+                            <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>90 days of expert support</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta-section">
+                        <button class="pricing-cta" onclick="window.location.href='mailto:info@mykindahelp.com?subject=90-Day AI Implementation - $2,497'">Get Started Today</button>
+                        <p class="pricing-note">Typical ROI: 10+ hours saved per week<br>No technical expertise required</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section faq-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">Common Questions</span>
+                <h2 class="section-title">Everything You Need to Know</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-question">Do I need to know anything about AI or technology?</h3>
+                    <p class="faq-answer">Nope. That's the whole point. We handle all the technical stuff. You just tell us what you need, and we build it together. If you can send an email, you can do this program.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">What kind of results can I expect?</h3>
+                    <p class="faq-answer">Most clients save 10+ hours per week on repetitive tasks. That's time you can spend growing your business, landing new customers, or actually going home on time.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Is this a one-time fee or ongoing?</h3>
+                    <p class="faq-answer">$2,497 is a one-time payment for the full 90-day program. No recurring fees. No hidden costs. You own everything we build together.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">What if I already have software or tools?</h3>
+                    <p class="faq-answer">Perfect! We'll audit what you have and show you how to use it better. Often, businesses are sitting on powerful tools they're only using at 20% capacity.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">How much time do I need to commit?</h3>
+                    <p class="faq-answer">About 2-3 hours per week for calls and testing. We do the heavy lifting—you just need to show up, give feedback, and learn the systems we're building.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <img src="logo.png" alt="MyKindAHelp" class="footer-logo">
+            <div class="footer-info">© 2026 MyKindAHelp.com • All Rights Reserved</div>
+            <div class="footer-location">Tampa, FL</div>
+        </div>
+    </footer>
 </body>
 </html>
