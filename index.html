@@ -96,19 +96,25 @@
         .section-subtitle { font-size: 1.1rem; color: #AAAAAA; line-height: 1.7; }
 
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
-        .pricing-card { background: #1a1a1a; border-radius: 24px; padding: 2.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.5); transition: all 0.3s; position: relative; border: 2px solid rgba(59,163,208,0.2); }
+        .pricing-card { background: #1a1a1a; border-radius: 24px; padding: 2.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.5); transition: all 0.3s; position: relative; border: 2px solid rgba(59,163,208,0.2); overflow: hidden; }
+        .pricing-card::before { content: ''; position: absolute; top: 0; right: 0; width: 180px; height: 180px; background-size: cover; background-position: center; opacity: 0.15; border-radius: 0 24px 0 50%; z-index: 0; }
+        .pricing-card:nth-child(1)::before { background-image: url('Google Profile Before and After.jpg'); }
+        .pricing-card:nth-child(2)::before { background-image: url('Landing_Page_Setup.jpg'); }
+        .pricing-card:nth-child(3)::before { background-image: url('Bundle.jpg'); }
         .pricing-card:hover { transform: translateY(-8px); box-shadow: 0 30px 80px rgba(0,0,0,0.7); border-color: var(--color-terracotta); }
+        .pricing-card:hover::before { opacity: 0.25; }
         .pricing-card.featured { border-color: var(--color-sage); background: linear-gradient(135deg, rgba(139,197,63,0.08), rgba(59,163,208,0.08)); }
-        .best-value-badge { position: absolute; top: -12px; right: 20px; background: var(--color-sage); color: white; padding: 0.5rem 1.25rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; box-shadow: 0 4px 12px rgba(139,197,63,0.3); }
-        .pricing-icon { width: 70px; height: 70px; background: linear-gradient(135deg, rgba(59,163,208,0.1), rgba(139,197,63,0.1)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: var(--color-terracotta); font-size: 2rem; overflow: hidden; }
+        .pricing-card.featured::before { opacity: 0.2; }
+        .best-value-badge { position: absolute; top: -12px; right: 20px; background: var(--color-sage); color: white; padding: 0.5rem 1.25rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; box-shadow: 0 4px 12px rgba(139,197,63,0.3); z-index: 2; }
+        .pricing-icon { width: 70px; height: 70px; background: linear-gradient(135deg, rgba(59,163,208,0.1), rgba(139,197,63,0.1)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: var(--color-terracotta); font-size: 2rem; overflow: hidden; position: relative; z-index: 1; }
         .pricing-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
-        .pricing-name { font-family: var(--font-display); font-size: 1.75rem; color: #FFFFFF; margin-bottom: 1rem; }
-        .pricing-price { font-family: var(--font-display); font-size: 3.5rem; color: var(--color-terracotta); line-height: 1; margin-bottom: 0.5rem; }
-        .pricing-timeline { color: #AAAAAA; font-size: 0.9rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.5rem; }
-        .pricing-features { list-style: none; margin-bottom: 2rem; }
+        .pricing-name { font-family: var(--font-display); font-size: 1.75rem; color: #FFFFFF; margin-bottom: 1rem; position: relative; z-index: 1; }
+        .pricing-price { font-family: var(--font-display); font-size: 3.5rem; color: var(--color-terracotta); line-height: 1; margin-bottom: 0.5rem; position: relative; z-index: 1; }
+        .pricing-timeline { color: #AAAAAA; font-size: 0.9rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.5rem; position: relative; z-index: 1; }
+        .pricing-features { list-style: none; margin-bottom: 2rem; position: relative; z-index: 1; }
         .pricing-features li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.5rem 0; color: #DDDDDD; }
         .pricing-features li svg { color: var(--color-sage); flex-shrink: 0; margin-top: 0.25rem; }
-        .pricing-cta { width: 100%; background: linear-gradient(135deg, var(--color-terracotta), var(--color-terracotta-dark)); color: white; padding: 1rem 2rem; border-radius: 12px; border: none; font-family: var(--font-body); font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: 0 8px 25px rgba(59,163,208,0.3); }
+        .pricing-cta { width: 100%; background: linear-gradient(135deg, var(--color-terracotta), var(--color-terracotta-dark)); color: white; padding: 1rem 2rem; border-radius: 12px; border: none; font-family: var(--font-body); font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: 0 8px 25px rgba(59,163,208,0.3); position: relative; z-index: 1; }
         .pricing-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(59,163,208,0.4); }
 
         .about-section { padding: 6rem 4%; background: #000000; }
