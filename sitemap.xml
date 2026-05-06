@@ -31,4 +31,20 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  
+  <!-- Blog Post #3: 5 Reasons Not Showing Up on Google -->
+  <url>
+    <loc>https://mykindahelp.com/blog/5-reasons-business-not-showing-up-google.html</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Blog Post #4: How to Get Google Reviews -->
+  <url>
+    <loc>https://mykindahelp.com/blog/how-to-get-google-reviews.html</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
