@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Expert insights on Google Business Profile optimization, landing page design, and local SEO for Tampa small businesses. Free guides and actionable tips.">
+    <title>Blog - Local SEO & Marketing Tips for Tampa Businesses | MyKindAHelp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-cream: #EEF4F7;
+            --color-warm-white: #FFFFFF;
+            --color-terracotta: #3BA3D0;
+            --color-sage: #8BC53F;
+            --color-charcoal: #2C2C2C;
+            --color-light-gray: #F8F9FA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--color-charcoal);
+            background: var(--color-warm-white);
+        }
+
+        .header {
+            background: var(--color-cream);
+            padding: 24px 0;
+            border-bottom: 1px solid #E5E5E5;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 24px;
+            color: var(--color-terracotta);
+            text-decoration: none;
+        }
+
+        .nav a {
+            color: var(--color-charcoal);
+            text-decoration: none;
+            margin-left: 32px;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            color: var(--color-terracotta);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--color-terracotta) 0%, #2E8AB8 100%);
+            color: white;
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 48px;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+
+        .filter-button {
+            padding: 10px 20px;
+            border: 2px solid var(--color-terracotta);
+            background: white;
+            color: var(--color-terracotta);
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-button:hover,
+        .filter-button.active {
+            background: var(--color-terracotta);
+            color: white;
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .post-card {
+            background: white;
+            border: 1px solid #E5E5E5;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .post-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .post-content {
+            padding: 24px;
+        }
+
+        .post-meta {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .post-category {
+            display: inline-block;
+            background: var(--color-sage);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .post-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 24px;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .post-title a {
+            color: var(--color-charcoal);
+            text-decoration: none;
+        }
+
+        .post-title a:hover {
+            color: var(--color-terracotta);
+        }
+
+        .post-excerpt {
+            color: #555;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: var(--color-terracotta);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .read-more:hover {
+            gap: 12px;
+        }
+
+        .newsletter-box {
+            background: var(--color-light-gray);
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .newsletter-box h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .newsletter-box p {
+            color: #555;
+            margin-bottom: 24px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 14px 20px;
+            border: 2px solid #E5E5E5;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .newsletter-button {
+            padding: 14px 28px;
+            background: var(--color-terracotta);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .newsletter-button:hover {
+            background: #2E8AB8;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo">MyKindAHelp</a>
+            <nav class="nav">
+                <a href="/">Home</a>
+                <a href="/blog">Blog</a>
+                <a href="/#pricing">Pricing</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Marketing Insights for Tampa Businesses</h1>
+        <p>Practical guides on Google Business Profile optimization, landing page design, and local SEO—no fluff, just results.</p>
+    </section>
+
+    <div class="container">
+        <div class="filter-bar">
+            <button class="filter-button active" data-filter="all">All Posts</button>
+            <button class="filter-button" data-filter="google-business">Google Business Profile</button>
+            <button class="filter-button" data-filter="landing-pages">Landing Pages</button>
+            <button class="filter-button" data-filter="local-seo">Local SEO</button>
+            <button class="filter-button" data-filter="tampa">Tampa</button>
+        </div>
+
+        <div class="posts-grid">
+            <!-- Blog Post #1 -->
+            <article class="post-card" data-categories="google-business local-seo tampa">
+                <div class="post-content">
+                    <div class="post-meta">
+                        <span class="post-category">Google Business Profile</span>
+                        <span>May 5, 2026 • 12 min read</span>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="/blog/how-to-optimize-google-business-profile.html">How to Optimize Your Google Business Profile in 2026: Complete Guide</a>
+                    </h2>
+                    <p class="post-excerpt">
+                        Your Google Business Profile isn't just a free listing—it's the most powerful marketing tool you're probably not using correctly. Learn the exact steps to rank higher in local search and get more customer calls.
+                    </p>
+                    <a href="/blog/how-to-optimize-google-business-profile.html" class="read-more">
+                        Read Full Guide →
+                    </a>
+                </div>
+            </article>
+
+            <!-- Blog Post #2 - Will be added after we write it -->
+            <article class="post-card" data-categories="landing-pages local-seo">
+                <div class="post-content">
+                    <div class="post-meta">
+                        <span class="post-category">Landing Pages</span>
+                        <span>May 5, 2026 • 10 min read</span>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="/blog/landing-page-vs-website.html">Landing Page vs Website: What Small Businesses Actually Need</a>
+                    </h2>
+                    <p class="post-excerpt">
+                        Most small businesses waste money building full websites when a simple landing page would get better results. Here's the truth about what you actually need to get found and get customers.
+                    </p>
+                    <a href="/blog/landing-page-vs-website.html" class="read-more">
+                        Read Full Article →
+                    </a>
+                </div>
+            </article>
+
+            <!-- Placeholder for future posts -->
+            <article class="post-card" data-categories="google-business local-seo tampa" style="opacity: 0.6; pointer-events: none;">
+                <div class="post-content">
+                    <div class="post-meta">
+                        <span class="post-category">Local SEO</span>
+                        <span>Coming Soon</span>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="#">5 Reasons Your Business Isn't Showing Up on Google (And How to Fix It)</a>
+                    </h2>
+                    <p class="post-excerpt">
+                        If you're not appearing in local search results, it's costing you customers every single day. Discover the most common visibility problems and how to fix them fast.
+                    </p>
+                </div>
+            </article>
+        </div>
+
+        <div class="newsletter-box">
+            <h2>Get Tampa Marketing Tips</h2>
+            <p>New guides on local SEO, Google Business Profile optimization, and landing page design. No spam, just useful stuff.</p>
+            <form class="newsletter-form" action="#" method="post">
+                <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                <button type="submit" class="newsletter-button">Subscribe</button>
+            </form>
+            <p style="margin-top: 16px; font-size: 14px; color: #666;">Or just <a href="/" style="color: var(--color-terracotta);">check out our services</a> if you want us to handle it.</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple filter functionality
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const postCards = document.querySelectorAll('.post-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filter = button.dataset.filter;
+
+                postCards.forEach(card => {
+                    if (filter === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        const categories = card.dataset.categories || '';
+                        if (categories.includes(filter)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
